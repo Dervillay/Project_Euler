@@ -35,7 +35,6 @@ for y in range(y_len):
             products.append(grid[y][x] * grid[y-1][x] * grid[y-2][x] * grid[y-3][x])
 
         # Check diagonally up and right
-        if y >= 3:
             products.append(grid[y][x] * grid[y-1][x+1] * grid[y-2][x+2] * grid[y-3][x+3])
 
         # Check diagonally down and right
