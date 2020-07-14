@@ -1,26 +1,18 @@
-import sys
 from fractions import Fraction
 
-sys.setrecursionlimit(1020)
+root_two_expansions = {1: Fraction(1 + 1/2)}
 
-# Could be improved using memoization, but this approach still runs
-# in well under a minute, so is acceptable for now
-def root_two(iterations, first_iteration):
-    if iterations == 1:
-        if first_iteration:
-            return Fraction(1 + 1/2)
-        else:
-            return Fraction(2 + 1/2)
-    elif first_iteration:
-        return Fraction(1 + 1/root_two(iterations - 1, False))
-    else:
-        return Fraction(2 + 1/root_two(iterations - 1, False))
+# Memoization approach that populates the root_two_expansions dictionary with the value
+# of the ith expansion for 1 <= i <= 1000
+def populate_root_two_expansions(iterations):
+    for i in range(2, iterations + 1):
+        root_two_expansions[i] = Fraction(1 + 1/(1 + root_two_expansions[i-1]))
 
+populate_root_two_expansions(1000)
 total = 0
 
-for i in range(1, 1001):
-    fraction = root_two(i, True)
-
+# Count number of expansions where numerator has more digits than denominator
+for fraction in root_two_expansions.values():
     if len(str(fraction.numerator)) > len(str(fraction.denominator)):
         total += 1
 
