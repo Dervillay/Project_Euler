@@ -35,7 +35,6 @@ def list_primes(upto):
 def concat(a, b):
     return int(str(a) + str(b))
 
-
 # Takes a list and returns whether all elements are primes
 def all_prime(nums):
     for num in nums:
