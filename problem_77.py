@@ -1,4 +1,4 @@
-from math import sqrt, floor
+from math import sqrt
 
 # Sieve of Eratosthenes
 def list_primes(upto):
@@ -38,6 +38,4 @@ while True:
         print(n)
         break
     n += 1
-
-
-
+    
