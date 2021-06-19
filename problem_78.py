@@ -1,4 +1,3 @@
-
 # Calculate generalised pentagonal number according to https://en.wikipedia.org/wiki/Pentagonal_number
 def generalised_pentagonal_number(summand_index):
     if summand_index % 2 == 0:
